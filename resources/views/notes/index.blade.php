@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Notes') }}
+            {{ request()->routeIs('notes.index')? __('Notes') : __('Trash') }}
         </h2>
     </x-slot>
 
@@ -12,9 +12,10 @@
                 {{ session('success') }}
             </x-alert-success>
 
+            @if(request()->routeIs('notes.index'))
+                <a href="{{ route('notes.create') }}" class="btn-link btn-lg mb-2">+ New note</a>
+            @endif
 
-            <a href="{{ route('notes.create') }}" class="btn-link btn-lg mb-2">+ New note</a>
-            
             @forelse ($notes as $note)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <h2 class="font-bold text-2xl">
@@ -26,7 +27,11 @@
                     <span class="block mt-4 text-sm opacity-70">{{ $note->updated_at->diffForHumans() }}</span>
                 </div>    
             @empty
-            <p>You have no notes yet.</p>
+                @if(request()->routeIs('notes.index'))
+                <p>You have no notes yet.</p>
+                @else
+                <p>No items in the trash.</p>
+                @endif
             @endforelse
 
             {{ $notes->links() }}
