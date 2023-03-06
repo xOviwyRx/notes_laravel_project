@@ -33,11 +33,11 @@
                         @csrf
                         <button type="submit" class="btn-link">Restore note</button>
                     </form>
-                    <!--<form action="{{ route('notes.destroy', $note) }}" method="post">
+                    <form action="{{ route('trashed.destroy', $note) }}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you wish to move this note to thrash')">Move to Trash</button>
-                    </form>!-->
+                        <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you wish to delete this note forever. This action cannot be undone')">Delete Forever</button>
+                    </form>
                 @endif
             </div>
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
