@@ -14,9 +14,7 @@ class NoteController extends Controller
     public function index()
     {
         $notes = Note::where('user_id', Auth::id())->latest('updated_at')->get();
-        $notes->each(function($note){
-            dump($note->title);
-        });
+        return view('notes.index')->with('notes', $notes);
     }
 
     /**
