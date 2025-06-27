@@ -1,6 +1,6 @@
 # 📝 Laravel Notes Manager
 
-[View Screenshot](../public/images/screenshot.png)
+[View Screenshot](../public/images/screenshots/screenshot.png)
 
 A full-featured note-taking application with user authentication, built with Laravel and Docker.
 
